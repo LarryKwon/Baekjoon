@@ -11,19 +11,19 @@
 
 using namespace std;
 
-int main(){
-  int a;
-  int b;
-  while(true){
-    cin >> a >> b;
-    if(!cin){
-      cin.clear(ios_base::goodbit);
-      cin.ignore();
-      return 0;
-    }
-    else{
-      cout << a+b << '\n';
-    }
+// int main(){
+//   int a;
+//   int b;
+//   while(true){
+//     cin >> a >> b;
+//     if(!cin){
+//       cin.clear(ios_base::goodbit);
+//       cin.ignore();
+//       return 0;
+//     }
+//     else{
+//       cout << a+b << '\n';
+//     }
     
-  }
-}
+//   }
+// }
