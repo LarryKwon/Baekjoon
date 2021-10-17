@@ -14,17 +14,17 @@
 using namespace std;
 
 
-int main(){
-  int n;
-  cin >> n;
-  cin.ignore();
-  string line;
-  getline(cin,line);
-  istringstream ss{line};
-  char number;
-  vector<int> numbers;
-  while(ss.get(number)){
-    numbers.push_back(number - '0');
-  }
-  cout << accumulate(numbers.begin(),numbers.end(),0);
-}
+// int main(){
+//   int n;
+//   cin >> n;
+//   cin.ignore();
+//   string line;
+//   getline(cin,line);
+//   istringstream ss{line};
+//   char number;
+//   vector<int> numbers;
+//   while(ss.get(number)){
+//     numbers.push_back(number - '0');
+//   }
+//   cout << accumulate(numbers.begin(),numbers.end(),0);
+// }
