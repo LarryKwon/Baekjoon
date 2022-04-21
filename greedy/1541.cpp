@@ -14,37 +14,39 @@
 
 using namespace std;
 
-int cnt;
-vector<int> waits;
-vector<int> sums;
+
 
 int main()
 {
+
     cin.tie(nullptr);
     cout.tie(NULL);
     ios_base::sync_with_stdio(false);
 
-    cin >> cnt;
-    waits.resize(cnt);
-    for (int i = 0; i < cnt; i++)
-    {
-        int wait;
-        cin >> wait;
-        waits[i] = wait;
+    vector<int> numbers;
+
+    string line;
+    getline(cin,line);
+    int result = 0;
+    string num;
+    bool isMinus=false;
+    for(int i=0; i<=line.size(); i++){
+        if(line[i] == '-' || line[i] == '+' || i == line.size()){
+            // cout << num << '\n';
+            if(isMinus){
+                result -= stoi(num);
+                num = "";
+            }else{
+                result += stoi(num);
+                num = "";
+            }
+        }else{
+            num += line[i];
+        }
+        if (line[i] == '-')
+        {
+            isMinus = true;
+        }
     }
-
-    sort(waits.begin(), waits.end());
-    int sum = 0;
-    for (int i = 0; i < cnt; i++)
-    {
-        sum += waits[i];
-        waits[i] = sum;
-    }
-
-    // for(auto p: waits){
-    //     cout << p << ' ';
-    // }
-
-    int result = accumulate(waits.begin(), waits.end(), 0);
     cout << result << '\n';
 }
