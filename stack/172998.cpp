@@ -15,13 +15,12 @@
 
 using namespace std;
 
-   
-   
+int main(){
+
     // cin.tie(nullptr);
     // cout.tie(NULL);
     // ios_base::sync_with_stdio(false);
-int main(){
-
+    
     int n;
     cin >> n;
     vector<int> numbers(n);
@@ -32,21 +31,26 @@ int main(){
         numbers[i] = number;
     }
 
-    int o_num = -1;
-    for(int i= (n-2); i>=0; i--){
-        if(numbers[i] < o_num && numbers[i] < numbers[i+1]){
-            o_num =  numbers[i+1];
-            ans[i] = o_num;
-        }else if(numbers[i] < o_num && numbers[i] >= numbers[i+1]){
-            ans[i] = o_num;
-        }else if(numbers[i] >= o_num && numbers[i] < numbers[i+1]){
-            o_num = numbers[i+1];
-            ans[i] = o_num;
-        }else if(numbers[i] >= o_num && numbers[i] >= numbers[i+1]){
-            o_num = -1;
-            ans[i] = o_num;
+    stack<int> stacks;
+    for(int i=n-1; i>=0; i--){
+        if(stacks.empty()){
+            ans[i] = -1;
+            stacks.push(numbers[i]);
+        }else{
+            while( !stacks.empty() && stacks.top() <= numbers[i]){
+                stacks.pop();
+            }
+            if(stacks.empty()){
+                ans[i] = -1;
+                stacks.push(numbers[i]);
+            }else{
+                ans[i] = stacks.top();
+                stacks.push(numbers[i]);
+            }
         }
     }
+
+    int o_num = -1;
     for(auto p: ans){
         cout << p << " ";
     }
